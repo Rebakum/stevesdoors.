@@ -1,3 +1,5 @@
+import Navbar from "@/Components/Sheared/Navbar/Navbar";
+import TopHeader from "@/Components/Sheared/TopHeader/TopHeader";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -27,6 +29,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <TopHeader />
+        <Navbar />
         {children}
       </body>
     </html>
