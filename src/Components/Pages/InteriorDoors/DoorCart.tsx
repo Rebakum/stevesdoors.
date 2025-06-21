@@ -1,7 +1,7 @@
 "use client";
 
-import door1 from "@/assest/images/Interior Doors/M-SM-2P-ST-BC-2868.jpg";
-import door2 from "@/assest/images/Interior Doors/UH-SM-2P-ST-SH-2868.jpg";
+import door1 from "@/assets/images/Interior Doors/M-SM-2P-ST-BC-2868.jpg";
+import door2 from "@/assets/images/Interior Doors/UH-SM-2P-ST-SH-2868.jpg";
 import Image from "next/image";
 import Link from "next/link";
 

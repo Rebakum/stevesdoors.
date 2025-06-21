@@ -1,5 +1,5 @@
-import StunningInteriorDoorsImage2 from "@/assest/images/interior-1.webp";
-import StunningInteriorDoorsImage3 from "@/assest/images/interior-2.jpg";
+import StunningInteriorDoorsImage2 from "@/assets/images/interior-1.webp";
+import StunningInteriorDoorsImage3 from "@/assets/images/interior-2.jpg";
 import Image from "next/image";
 
 const StunningInteriorDoorsBanner = () => {

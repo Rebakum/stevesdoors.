@@ -1,5 +1,5 @@
-import StunningInteriorDoorsImage from "@/assest/images/interior-cat-768x826.webp";
-import StunningInteriorDoorsImage2 from "@/assest/images/interior_flus-1024x916.webp";
+import StunningInteriorDoorsImage from "@/assets/images/interior-cat-768x826.webp";
+import StunningInteriorDoorsImage2 from "@/assets/images/interior_flus.jpg";
 import Image from "next/image";
 import StunningInteriorDoorsImageBanner from "./StunningInteriorDoorsBanner";
 

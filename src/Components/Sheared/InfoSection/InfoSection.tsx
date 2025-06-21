@@ -1,8 +1,8 @@
 // components/InfoSection.jsx
-import Image2 from "@/assest/images/catalogue.png";
-import Image1 from "@/assest/images/guarantee.png";
-import Image3 from "@/assest/images/techincal.png";
-import Image4 from "@/assest/images/Wrench-01-1.svg";
+import Image2 from "@/assets/images/catalogue.png";
+import Image1 from "@/assets/images/guarantee.png";
+import Image3 from "@/assets/images/techincal.png";
+import Image4 from "@/assets/images/Wrench-01-1.svg";
 import Image from "next/image";
 
 const InfoSection = () => {

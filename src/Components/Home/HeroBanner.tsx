@@ -1,4 +1,4 @@
-import heroImg from "@/assest/images/regency-cat-1.jpg";
+import heroImg from "@/assets/images/regency-cat-1.jpg";
 import Image from "next/image";
 
 const HeroBanner = () => {

@@ -7,10 +7,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/Components/Ui/carousel";
-import interiorDoor3 from "@/assest/images/Interior Doors/Bifold_Doors.png";
+import interiorDoor3 from "@/assets/images/Interior Doors/Bifold_Doors.png";
 
-import interiorDoor2 from "@/assest/images/Interior Doors/glass-doors.png";
-import interiorDoor4 from "@/assest/images/Interior Doors/wood-panel-doors.png";
+import interiorDoor2 from "@/assets/images/Interior Doors/glass-doors.png";
+import interiorDoor4 from "@/assets/images/Interior Doors/wood-panel-doors.png";
 import Image from "next/image";
 
 const DoorTypesCarousel = () => {

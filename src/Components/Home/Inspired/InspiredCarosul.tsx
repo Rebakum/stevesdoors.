@@ -5,13 +5,13 @@ import {
   CarouselItem,
 } from "@/Components/Ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import Image3 from "../../../assest/images/Gallery//Image-gallery-ext2.jpg";
-import Image4 from "../../../assest/images/Gallery//Image-gallery-ext3.jpg";
-import Image1 from "../../../assest/images/Gallery/Image-gallery-ext-int.jpg";
-import Image2 from "../../../assest/images/Gallery/Image-gallery-ext1.jpg";
-import Image5 from "../../../assest/images/Gallery/Image-gallery-int1.jpg";
-import Image6 from "../../../assest/images/Gallery/Image-gallery-int2.jpg";
-import Image7 from "../../../assest/images/Gallery/Image-gallery-int3.jpg";
+import Image3 from "../../../assets/images/Gallery//Image-gallery-ext2.jpg";
+import Image4 from "../../../assets/images/Gallery//Image-gallery-ext3.jpg";
+import Image1 from "../../../assets/images/Gallery/Image-gallery-ext-int.jpg";
+import Image2 from "../../../assets/images/Gallery/Image-gallery-ext1.jpg";
+import Image5 from "../../../assets/images/Gallery/Image-gallery-int1.jpg";
+import Image6 from "../../../assets/images/Gallery/Image-gallery-int2.jpg";
+import Image7 from "../../../assets/images/Gallery/Image-gallery-int3.jpg";
 
 import Image from "next/image";
 

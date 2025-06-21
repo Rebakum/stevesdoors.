@@ -1,8 +1,9 @@
-import Image2 from "@/assest/images/4lite-768x769.jpg";
-import Image3 from "@/assest/images/Interior-extend.jpg";
-import Image1 from "@/assest/images/interior_flus.jpg";
+import Image2 from "@/assets/images/4lite-768x769.jpg";
+import Image3 from "@/assets/images/Interior-extend.jpg";
+import Image1 from "@/assets/images/interior_flus.jpg";
 import { Button } from "@/Components/Ui/button";
 import Image from "next/image";
+import { FaArrowRight } from "react-icons/fa";
 
 const Featured = () => {
   const Images = [Image1, Image2, Image3];
@@ -25,7 +26,7 @@ const Featured = () => {
         {Images.map((img, index) => (
           <div
             key={index}
-            className="w-[400px] h-[600px] relative mx-auto rounded-lg shadow-lg overflow-hidden"
+            className="w-[400px] h-[600px] relative mx-auto rounded-sm shadow-lg overflow-hidden"
           >
             <Image
               src={img}
@@ -37,8 +38,9 @@ const Featured = () => {
         ))}
       </div>
       <div className="flex justify-center items-center">
-        <Button className="py-6 px-12 bg-blue-900 hover:bg-blue-800 rounded-sm ">
-          Views Doors
+        <Button className="py-6 px-10 bg-blue-900 hover:bg-blue-800 rounded-sm ">
+          Views Doors {""}
+          <FaArrowRight />
         </Button>
       </div>
     </div>
