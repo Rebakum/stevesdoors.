@@ -1,3 +1,5 @@
+import Footer from "@/Components/Sheared/Footer";
+
 import Navbar from "@/Components/Sheared/Navbar/Navbar";
 import TopHeader from "@/Components/Sheared/TopHeader/TopHeader";
 import type { Metadata } from "next";
@@ -32,6 +34,8 @@ export default function RootLayout({
         <TopHeader />
         <Navbar />
         {children}
+
+        <Footer />
       </body>
     </html>
   );
