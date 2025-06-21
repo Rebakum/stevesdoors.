@@ -1,5 +1,6 @@
 import BeautifulExteriorDoors from "@/Components/Home/BeautifulExteriorDoors";
 import DoorTypes from "@/Components/Home/DoorTypes/DoorTypes";
+import Featured from "@/Components/Home/Featured/Featured";
 
 import HeroBanner from "@/Components/Home/HeroBanner";
 import Inspired from "@/Components/Home/Inspired/Inspired";
@@ -14,6 +15,7 @@ export default function Home() {
       <BeautifulExteriorDoors />
       <DoorTypes />
       <Inspired />
+      <Featured />
       <InfoSection />
     </>
   );
