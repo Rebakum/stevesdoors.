@@ -1,12 +1,13 @@
 import heroImg from "@/assets/images/regency-cat-1.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroBanner = () => {
   return (
     <section className="container mx-auto py-12">
       <div className=" flex flex-col-reverse md:flex-row items-center px-6 md:px-12 gap-8">
         {/* Text Content */}
-        <div className="w-full min-h-screen flex flex-col justify-center items-start  p-20 bg-gray-100  md:w-1/2 text-center  md:text-left">
+        <div className="w-full min-h-screen rounded-sm flex flex-col justify-center items-start  p-20 bg-gray-300  md:w-1/2 text-center  md:text-left">
           <h1 className="text-9xl md:text-5xl font-bold text-gray-800 leading-tight mb-6">
             The Envy of <br /> the Block
           </h1>
@@ -15,9 +16,11 @@ const HeroBanner = () => {
             flawless finish that goes all the way up to the glass edge.
           </p>
           <div className="flex justify-center md:justify-start gap-4">
-            <button className=" px-6 py-3  inline-block bg-blue-900 text-white rounded hover:bg-blue-800 transition duration-300">
-              Click Here
-            </button>
+            <Link href="RegencyFiberglassDoors">
+              <button className=" px-6 py-3  inline-block bg-blue-900 text-white rounded hover:bg-blue-800 transition duration-300">
+                Click Here
+              </button>{" "}
+            </Link>
           </div>
         </div>
 
@@ -26,7 +29,7 @@ const HeroBanner = () => {
           <Image
             src={heroImg}
             alt="Interior Door"
-            className="rounded-xl shadow-md"
+            className="rounded-sm shadow-md"
             priority
           />
         </div>

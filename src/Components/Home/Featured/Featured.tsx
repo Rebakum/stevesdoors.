@@ -10,7 +10,7 @@ const Featured = () => {
   return (
     <div className="container mx-auto my-12">
       {/* Header */}
-      <div className="flex flex-col gap-8 md:flex-row items-center justify-center p-8 bg-gray-100">
+      <div className="flex flex-col gap-8 md:flex-row items-center justify-center p-8 bg-gray-300">
         <div className="w-full md:w-1/3 text-center md:text-start border-l-8 border-blue-900 pl-4 h-10">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight mb-6">
             Featured
@@ -22,7 +22,7 @@ const Featured = () => {
       </div>
 
       {/* Image Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-8">
         {Images.map((img, index) => (
           <div
             key={index}

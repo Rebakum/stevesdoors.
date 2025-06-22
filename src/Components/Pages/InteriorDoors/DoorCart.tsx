@@ -22,7 +22,7 @@ const DoorCart = () => {
         </div>
 
         {/* Text Content */}
-        <div className="text-center md:text-left bg-gray-100 p-8 w-full h-[400px] ">
+        <div className="text-center md:text-left bg-gray-300 p-8 w-full h-[400px] ">
           <h2 className="text-2xl font-semibold mb-4">Molded Panel Doors</h2>
           <p className="text-gray-700 mb-6 max-w-md">
             Molded panel doors resist shrinking, swelling, cracking and
@@ -52,7 +52,7 @@ const DoorCart = () => {
         </div>
 
         {/* Text Content */}
-        <div className="text-center md:text-left p-8 bg-gray-100 w-full h-[400px]  ">
+        <div className="text-center md:text-left p-8 bg-gray-300 w-full h-[400px]  ">
           <h2 className="text-2xl font-semibold mb-4">Ultra MDF Doors</h2>
           <p className="text-gray-700 mb-6 max-w-md">
             Primed doors are assembled by hand and manufactured to exact

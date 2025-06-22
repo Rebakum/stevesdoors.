@@ -6,7 +6,7 @@ const BeautifulExteriorDoors = () => {
     <section className="container mx-auto py-12">
       <div className=" flex flex-col-reverse md:flex-row-reverse items-center px-6 md:px-12 gap-8">
         {/* Text Content */}
-        <div className="w-full min-h-screen flex flex-col justify-center items-start  p-20 bg-gray-100  md:w-1/2 text-center  md:text-left">
+        <div className="w-full min-h-screen rounded-sm flex flex-col justify-center items-start  p-20 bg-gray-300  md:w-1/2 text-center  md:text-left">
           <h1 className="text-9xl md:text-5xl font-bold text-gray-800 leading-tight mb-6">
             Beautiful Exterior <br /> Doors
           </h1>
@@ -23,7 +23,7 @@ const BeautifulExteriorDoors = () => {
           <Image
             src={heroImg}
             alt="Interior Door"
-            className="rounded-xl shadow-md"
+            className="rounded-sm shadow-md"
             priority
           />
         </div>
