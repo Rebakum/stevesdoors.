@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,12 +11,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
         {/* Logo & Address */}
         <div>
-          <Image
+          {/* <Image
             src="/logo.png" // replace with your logo path
             alt="Steves & Sons"
             width={80}
             height={80}
-          />
+          /> */}
           <h2 className="font-bold text-xl mt-4 mb-2">Steves & Sons</h2>
           <p>
             203 Humble Ave.
