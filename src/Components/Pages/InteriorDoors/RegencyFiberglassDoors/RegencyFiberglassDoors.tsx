@@ -6,12 +6,12 @@ import RegencyFiberglassDoorsGallery from "./RegencyFiberglassDoorsPage/RegencyF
 
 const RegencyFiberglassDoors = () => {
   return (
-    <div className="container mx-auto min-h-screen lg:mb-72">
+    <div className="container mx-auto min-h-screen  lg:pb-72">
       <RegencyFiberglassDoorsBanner />
       <RegencyFiberglassDoorsGallery />
 
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-        <div className="relative min-h-screen flex flex-col items-center">
+        <div className="relative  flex flex-col items-center">
           <div className="w-full h-[600px] flex justify-center items-center relative">
             <Image
               src={InteriorDoor}
@@ -23,7 +23,7 @@ const RegencyFiberglassDoors = () => {
             />
 
             {/* Overlay Text Content */}
-            <div className="absolute -bottom-48 left-8 z-10 rounded-sm flex flex-col justify-center items-center opacity-90 p-8 md:p-12 bg-gray-800 text-center max-w-[90%] h-[400px] ">
+            <div className="absolute lg:-bottom-48 lg:left-8 z-10 rounded-sm flex flex-col justify-center items-center opacity-90 p-8 md:p-12 bg-gray-800 text-center max-w-[90%] h-[400px] ">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-50 leading-tight mb-4">
                 Interior Doors
               </h1>
@@ -36,7 +36,7 @@ const RegencyFiberglassDoors = () => {
             </div>
           </div>
         </div>
-        <div className="relative min-h-screen flex flex-col items-center ">
+        <div className="relative flex flex-col items-center ">
           <div className="w-full h-[600px] flex justify-center items-center relative">
             <Image
               src={InteriorDoor1}
@@ -48,7 +48,7 @@ const RegencyFiberglassDoors = () => {
             />
 
             {/* Overlay Text Content */}
-            <div className="absolute -bottom-48 left-8 z-10 rounded-sm flex flex-col justify-center items-center opacity-90 p-8 md:p-12 bg-gray-300 text-center max-w-[90%]  h-[400px]">
+            <div className="absolute lg:-bottom-48 lg:left-8 z-10 rounded-sm flex flex-col justify-center items-center opacity-90 p-8 md:p-12 bg-gray-300 text-center max-w-[90%]  h-[400px]">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-4">
                 Exterior Doors
               </h1>

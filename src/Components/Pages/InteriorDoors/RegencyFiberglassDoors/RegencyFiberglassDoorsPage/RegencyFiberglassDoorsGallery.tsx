@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const RegencyFiberglassDoorsGallery = () => {
   return (
-    <div className="container mx-auto py-12">
+    <div className="container mx-auto pt-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-4">
         <div>
           <Image

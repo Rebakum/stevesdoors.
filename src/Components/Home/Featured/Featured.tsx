@@ -3,6 +3,7 @@ import Image3 from "@/assets/images/Interior-extend.jpg";
 import Image1 from "@/assets/images/interior_flus.jpg";
 import { Button } from "@/Components/Ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
 const Featured = () => {
@@ -11,7 +12,7 @@ const Featured = () => {
     <div className="container mx-auto my-12">
       {/* Header */}
       <div className="flex flex-col gap-8 md:flex-row items-center justify-center p-8 bg-gray-300">
-        <div className="w-full md:w-1/3 text-center md:text-start border-l-8 border-blue-900 pl-4 h-10">
+        <div className="w-full text-left md:w-1/3  md:text-start border-l-8 border-blue-900 pl-4 h-10">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight mb-6">
             Featured
           </h1>
@@ -38,10 +39,12 @@ const Featured = () => {
         ))}
       </div>
       <div className="flex justify-center items-center">
-        <Button className="py-6 px-10 bg-blue-900 hover:bg-blue-800 rounded-sm ">
-          Views Doors {""}
-          <FaArrowRight />
-        </Button>
+        <Link href="interior-doors">
+          <Button className="py-6 px-10 bg-blue-900 hover:bg-blue-800 rounded-sm ">
+            Views Doors {""}
+            <FaArrowRight />
+          </Button>
+        </Link>
       </div>
     </div>
   );
