@@ -24,6 +24,7 @@ const Navbar = () => {
     { name: "Interior Doors", href: "/interior-doors" },
     { name: "Exterior Doors", href: "/exterior-doors" },
     { name: "Resources", href: "/resources" },
+    { name: "Inspiration", href: "/inspiration" },
     { name: "Our Story", href: "/our-story" },
     { name: "Careers", href: "/careers" },
   ];

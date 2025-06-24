@@ -1,4 +1,4 @@
-import heroImg from "@/assets/images/Regency-Fir-3-Lite-Top-Lite-Hickory-shutterstock.jpg";
+import heroImg from "@/assets/images/Gallery/ex-1.jpg";
 import Image from "next/image";
 
 const RegencyFiberglassDoorsBanner = () => {

@@ -1,5 +1,5 @@
-import door1 from "@/assets/images/Interior Doors/M-SM-2P-ST-BC-2868.jpg";
-import door2 from "@/assets/images/Interior Doors/UH-SM-2P-ST-SH-2868.jpg";
+import door1 from "@/assets/images/InteriorDoors/id-1.png";
+import door2 from "@/assets/images/InteriorDoors/id-2.png";
 import InteriorDoorCart from "./InteriorDoorCart";
 
 const InteriorDoors = () => {

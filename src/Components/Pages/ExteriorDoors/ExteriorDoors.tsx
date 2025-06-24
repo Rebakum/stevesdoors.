@@ -1,6 +1,6 @@
-import door1 from "@/assets/images/ExteriorDoors/Direct_Glazed_Fiberglass_Doors.png";
-import door2 from "@/assets/images/ExteriorDoors/Element-steel-door.png";
-import ExteriorDoorCart from "./Exterior Doors/ExteriorDoorsCart";
+import door1 from "@/assets/images/ExteriorDoors/ed-1.png";
+import door2 from "@/assets/images/ExteriorDoors/ed-2.png";
+import ExteriorDoorCart from "./ExteriorDoors/ExteriorDoorsCart";
 
 const ExteriorDoors = () => {
   return (

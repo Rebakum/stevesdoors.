@@ -1,6 +1,7 @@
 import Banner2 from "@/Components/Banner/Banner2";
-import BeautifulExterior from "@/Components/Pages/ExteriorDoors/Exterior Doors/BeautifulExteriorDoors";
 import ExteriorDoors from "@/Components/Pages/ExteriorDoors/ExteriorDoors";
+import BeautifulExterior from "@/Components/Pages/ExteriorDoors/ExteriorDoors/BeautifulExteriorDoors";
+import InfoSection from "@/Components/Sheared/InfoSection/InfoSection";
 
 const exteriorDoors = () => {
   return (
@@ -8,6 +9,7 @@ const exteriorDoors = () => {
       <Banner2 />
       <ExteriorDoors />
       <BeautifulExterior />
+      <InfoSection />
     </div>
   );
 };

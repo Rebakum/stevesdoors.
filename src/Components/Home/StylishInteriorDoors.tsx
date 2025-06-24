@@ -1,4 +1,4 @@
-import heroImg from "@/assets/images/INT_SPH_MLDD_5P_WHT_LHIS.jpg";
+import heroImg from "@/assets/images/Gallery/in-1.jpg";
 import Image from "next/image";
 
 const StylishInteriorDoors = () => {

@@ -1,7 +1,7 @@
-import StunningInteriorDoorsImage from "@/assets/images/ExteriorDoors/ext-1.jpg";
-import StunningInteriorDoorsImage1 from "@/assets/images/ExteriorDoors/ext-2.jpg";
-import StunningInteriorDoorsImage2 from "@/assets/images/ExteriorDoors/ext-3.jpg";
-import StunningInteriorDoorsImage3 from "@/assets/images/ExteriorDoors/ext-4.jpg";
+import StunningInteriorDoorsImage from "@/assets/images/Gallery/Image-gallery-ext1.jpg";
+import StunningInteriorDoorsImage1 from "@/assets/images/Gallery/Image-gallery-ext2.jpg";
+import StunningInteriorDoorsImage2 from "@/assets/images/Gallery/Image-gallery-ext3.jpg";
+import StunningInteriorDoorsImage3 from "@/assets/images/Gallery/ex-0.jpg";
 import Image from "next/image";
 
 const BeautifulExterior = () => {

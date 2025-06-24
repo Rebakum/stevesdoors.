@@ -7,10 +7,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/Components/Ui/carousel";
-import interiorDoor3 from "@/assets/images/Interior Doors/Bifold_Doors.png";
+import interiorDoor1 from "@/assets/images/InteriorDoors/id-1.png";
 
-import interiorDoor2 from "@/assets/images/Interior Doors/glass-doors.png";
-import interiorDoor4 from "@/assets/images/Interior Doors/wood-panel-doors.png";
+import interiorDoor2 from "@/assets/images/InteriorDoors/id-2.png";
+import interiorDoor3 from "@/assets/images/InteriorDoors/id-3.jpg";
+import interiorDoor4 from "@/assets/images/InteriorDoors/id-4.jpg";
+import interiorDoor5 from "@/assets/images/InteriorDoors/id-5.png";
 import Image from "next/image";
 
 const DoorTypesCarousel = () => {
@@ -56,27 +58,27 @@ const doorTypes = [
   {
     id: 1,
     title: "Interior Door",
-    image: interiorDoor2,
+    image: interiorDoor1,
   },
   {
     id: 2,
     title: "Exterior Door",
-    image: interiorDoor3,
+    image: interiorDoor2,
   },
   {
     id: 3,
     title: "French Door",
-    image: interiorDoor2,
+    image: interiorDoor3,
   },
   {
     id: 4,
     title: "Sliding Door",
-    image: interiorDoor3,
+    image: interiorDoor4,
   },
   {
     id: 5,
     title: "Barn Door",
-    image: interiorDoor4,
+    image: interiorDoor5,
   },
 ];
 

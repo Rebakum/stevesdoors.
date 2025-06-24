@@ -1,4 +1,4 @@
-import backgroungImage from "@/assets/images/Interior-extend.jpg";
+import backgroungImage from "@/assets/images/Gallery/in-8.jpg";
 import Image from "next/image";
 
 const Banner1 = () => {

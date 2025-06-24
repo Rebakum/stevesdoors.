@@ -1,6 +1,6 @@
-import Image2 from "@/assets/images/4lite-768x769.jpg";
-import Image3 from "@/assets/images/Interior-extend.jpg";
-import Image1 from "@/assets/images/interior_flus.jpg";
+import Image2 from "@/assets/images/Gallery/Image-gallery-int1.jpg";
+import Image3 from "@/assets/images/Gallery/Image-gallery-int2.jpg";
+import Image1 from "@/assets/images/Gallery/Image-gallery-int3.jpg";
 import { Button } from "@/Components/Ui/button";
 import Image from "next/image";
 import Link from "next/link";
