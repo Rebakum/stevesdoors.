@@ -3,7 +3,7 @@ const Leadership = () => {
     <div className="mx-auto contaner py-12">
       <div className="flex flex-col md:flex-row gap-8 items-center justify-between p-8 bg-gray-300">
         <div className="w-full text-left md:w-1/3 flex pl-4 items-center md:text-left border-l-8 border-blue-900  h-14">
-          <h1 className="text-2xl md:text-5xl font-bold text-gray-800 leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-6">
             Our Story
           </h1>
         </div>

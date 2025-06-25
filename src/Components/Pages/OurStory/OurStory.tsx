@@ -6,23 +6,28 @@ import OurTourismSector from "./OurStory/OurTourismSector";
 
 const OurStory = () => {
   return (
-    <>
+    <div className="container mx-auto">
       <div className="relative w-full h-screen overflow-hidden">
-        {/* YouTube Video Background */}
-        <div className="absolute inset-0 w-full h-full z-0">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/xau74kckNMs?autoplay=1&mute=1&controls=0&loop=1&playlist=xau74kckNMs&modestbranding=1&showinfo=0"
-            title="YouTube video background"
+            src="https://www.youtube.com/embed/m6edRmYYASk?autoplay=1&mute=1&loop=1&playlist=m6edRmYYASk&controls=0&showinfo=0&modestbranding=1"
+            title="Background Video"
             frameBorder="0"
-            allow="autoplay; encrypted-media"
+            allow="autoplay; fullscreen"
             allowFullScreen
           ></iframe>
         </div>
 
-        {/* Overlay Text */}
-        <div className="relative z-10 flex items-center justify-center h-full bg-black bg-opacity-50 text-white text-4xl font-bold text-center px-4">
-          <h1>Legacy in every door we create</h1>
+        {/* Content Over Video */}
+        <div className="relative z-10 flex items-center justify-center h-full bg-black/40 text-white text-center px-4">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Welcome to Our Story
+            </h1>
+            <p className="text-lg md:text-xl">Experience the journey with us</p>
+          </div>
         </div>
       </div>
       <Leadership />
@@ -30,7 +35,7 @@ const OurStory = () => {
       <OurContributionSector />
       <OurRole />
       <OurTeam />
-    </>
+    </div>
   );
 };
 

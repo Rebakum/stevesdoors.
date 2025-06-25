@@ -88,7 +88,11 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <div
           className={`md:hidden text-2xl cursor-pointer ${
-            scrolled ? "text-gray-800" : isHome ? "text-blue-900" : "text-black"
+            scrolled
+              ? "text-gray-800"
+              : isHome
+              ? "text-blue-900"
+              : "text-gray-400"
           }`}
           onClick={() => setIsOpen(!isOpen)}
         >

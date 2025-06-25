@@ -1,5 +1,5 @@
 import ourTeam from "@/assets/images/Gallery/join-out-team.jpg";
-import { ArrowBigRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,7 +27,7 @@ const OurTeam = () => {
           <div className="flex justify-center items-center gap-4">
             <Link href="/" passHref>
               <button className="px-12 py-4 bg-blue-900 text-white rounded hover:bg-blue-800 transition duration-300 flex items-center gap-2">
-                Click Here <ArrowBigRight />
+                VIEW OPENINGS <ArrowRight />
               </button>
             </Link>
           </div>
