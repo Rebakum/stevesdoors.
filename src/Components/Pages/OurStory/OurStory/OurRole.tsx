@@ -1,6 +1,6 @@
-import Image6 from "@/assets/images/Story/6.jpg";
-import Image7 from "@/assets/images/Story/7.jpg";
-import Image8 from "@/assets/images/Story/8.jpg";
+import Image6 from "@/assets/images/Story/6-min.jpg";
+import Image7 from "@/assets/images/Story/7-min.jpg";
+import Image8 from "@/assets/images/Story/8-min.jpg";
 import Image from "next/image";
 
 const OurRole = () => {

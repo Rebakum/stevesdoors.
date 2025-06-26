@@ -1,4 +1,4 @@
-import Image5 from "@/assets/images/Story/5.jpg";
+import Image5 from "@/assets/images/Story/5-min.jpg";
 import Image from "next/image";
 
 const OurContributionSector = () => {

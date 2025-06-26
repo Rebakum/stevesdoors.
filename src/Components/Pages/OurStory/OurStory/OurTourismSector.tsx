@@ -1,6 +1,6 @@
-import Image2 from "@/assets/images/Story/2.jpg";
-import Image3 from "@/assets/images/Story/3.jpg";
-import Image4 from "@/assets/images/Story/4.jpg";
+import Image2 from "@/assets/images/Story/2-min.jpg";
+import Image3 from "@/assets/images/Story/3-min.jpg";
+import Image4 from "@/assets/images/Story/4-min.jpg";
 import Image from "next/image";
 
 const OurTourismSector = () => {

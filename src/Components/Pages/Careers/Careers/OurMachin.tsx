@@ -1,4 +1,4 @@
-import machinImage from "@/assets/images/Story/akaba-machin.jpg";
+import machinImage from "@/assets/images/Story/akaba-machin-min.jpg";
 import Image from "next/image";
 
 const OurMachin = () => {
