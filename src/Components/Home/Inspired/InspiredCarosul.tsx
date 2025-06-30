@@ -19,7 +19,13 @@ const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 
 const InspiredCarousel = () => {
   return (
-    <Carousel plugins={[Autoplay({ delay: 3000 })]}>
+    <Carousel
+      plugins={[Autoplay({ delay: 3000 })]}
+      opts={{
+        align: "center",
+        loop: true,
+      }}
+    >
       <CarouselContent>
         {images.map((img, index) => (
           <CarouselItem key={index} className="relative h-[400px]">

@@ -68,13 +68,11 @@ const Navbar = () => {
           href: "/interior-doors/glassDoors",
           image: hoverImage3,
         },
-
         {
           name: "Flush Doors",
           href: "/interior-doors/flushDoors",
           image: hoverImage4,
         },
-
         {
           name: "Bifold Doors",
           href: "/interior-doors/bifoldDoors",
@@ -131,16 +129,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed lg:top-10 left-0 w-full z-50  transition-all duration-300 px-10 ${
-        scrolled
-          ? "bg-white shadow-md"
-          : isHome
-          ? "bg-white"
-          : "bg-transparent "
+      className={`fixed lg:top-10 left-0 w-full z-50 transition-all duration-300 px-10 ${
+        scrolled ? "bg-white shadow-md" : isHome ? "bg-white" : "bg-transparent"
       }`}
     >
       <div className="max-w-screen-xl mx-auto px-4 py-6 flex justify-between items-center">
-        {/* Logo */}
         <div
           className={`text-2xl font-bold ${
             scrolled ? "text-gray-800" : isHome ? "text-blue-900" : "text-white"
@@ -156,7 +149,9 @@ const Navbar = () => {
               <Link
                 href={link.href || "#"}
                 className={`transition hover:text-blue-900 ${
-                  scrolled
+                  pathname === link.href
+                    ? "text-blue-900 font-semibold"
+                    : scrolled
                     ? "text-gray-800"
                     : isHome
                     ? "text-blue-900"
@@ -170,7 +165,7 @@ const Navbar = () => {
                 <div className="absolute top-full left-0 mt-1 hidden group-hover:flex bg-white shadow-lg rounded-md z-50">
                   <div className="flex">
                     {/* Text Menu */}
-                    <div className="flex flex-col">
+                    <div className="flex flex-col p-3 gap-3">
                       {link.submenu.map((sublink, subIndex) => (
                         <div
                           key={subIndex}
@@ -181,7 +176,11 @@ const Navbar = () => {
                         >
                           <Link
                             href={sublink.href}
-                            className="px-4 py-2 text-gray-700  hover:text-blue-800 whitespace-nowrap"
+                            className={`px-4 py-1 hover:text-blue-800 hover:border-l-4 hover:border-l-gray-700 whitespace-nowrap ${
+                              pathname === sublink.href
+                                ? "text-blue-900 font-semibold"
+                                : "text-gray-700"
+                            }`}
                           >
                             {sublink.name}
                           </Link>
@@ -191,12 +190,10 @@ const Navbar = () => {
 
                     {/* Image Preview */}
                     {hoveredImage && (
-                      <div className="w-48 h-32 ml-4 rounded overflow-hidden shadow transition-opacity duration-300 ease-in-out">
+                      <div className="w-48 h-48 p-5 bg-gray-200 ml-4 rounded overflow-hidden shadow transition-opacity duration-300 ease-in-out">
                         <Image
                           src={hoveredImage}
                           alt="Preview"
-                          width={300}
-                          height={300}
                           className="object-cover w-full h-full"
                         />
                       </div>
@@ -206,6 +203,7 @@ const Navbar = () => {
               )}
             </div>
           ))}
+
           {/* Search */}
           <input
             type="search"
@@ -248,7 +246,7 @@ const Navbar = () => {
       {isOpen && (
         <div
           className={`md:hidden px-4 pb-4 ${
-            scrolled || !isHome ? "bg-white text-gray-800" : " text-blue-700"
+            scrolled || !isHome ? "bg-white text-gray-800" : "text-blue-700"
           }`}
         >
           {navLinks.map((link, index) => (
@@ -256,7 +254,9 @@ const Navbar = () => {
               <div className="flex justify-between items-center">
                 <Link
                   href={link.href || "#"}
-                  className="block py-2 hover:text-blue-900"
+                  className={`block py-2 hover:text-blue-900 ${
+                    pathname === link.href ? "text-blue-900 font-semibold" : ""
+                  }`}
                   onClick={() => !link.submenu && setIsOpen(false)}
                 >
                   {link.name}
@@ -274,6 +274,7 @@ const Navbar = () => {
                   </button>
                 )}
               </div>
+
               {/* Mobile Submenu */}
               {link.submenu && dropdownStates[link.name] && (
                 <div className="pl-4">
@@ -281,7 +282,11 @@ const Navbar = () => {
                     <Link
                       key={subIndex}
                       href={sublink.href}
-                      className="block py-1 text-gray-700 hover:text-blue-900"
+                      className={`block py-1 hover:text-blue-900 ${
+                        pathname === sublink.href
+                          ? "text-blue-900 font-semibold"
+                          : "text-gray-700"
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {sublink.name}
@@ -305,7 +310,6 @@ const Navbar = () => {
                   : "border-gray-400 text-white"
               }`}
             />
-            {""}
             <FiSearch />
           </div>
         </div>

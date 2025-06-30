@@ -25,6 +25,7 @@ const DoorTypesCarousel = () => {
         plugins={[Autoplay({ delay: 6000 })]}
         opts={{
           align: "center",
+          loop: true,
         }}
         className="w-3/4 mx-auto my-8"
       >
@@ -32,7 +33,7 @@ const DoorTypesCarousel = () => {
           {doorTypes.map((door) => (
             <CarouselItem key={door.id} className="md:basis-1/2 lg:basis-1/3">
               <div className="flex items-center justify-center">
-                <Card className="w-full max-w-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Card className="w-full shadow-none ">
                   <CardContent className="flex flex-col border-none items-center justify-center">
                     <div className=" w-full flex items-center justify-center">
                       <Image
