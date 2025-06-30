@@ -1,10 +1,10 @@
-import heroImg from "@/assets/images/Gallery/ex-0.jpg";
+import heroImg from "@/assets/images/Gallery/Image-gallery-ext1.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
 const HeroBanner = () => {
   return (
-    <section className="container mx-auto py-12">
+    <section className="container mx-auto py-40 bg-gray-100 h-[80%]">
       <div className=" flex flex-col-reverse md:flex-row justify-center items-center px-6 md:px-12 gap-5 md:gap-8">
         {/* Text Content */}
         <div className="w-full min-h-screen rounded-sm flex flex-col items-start  p-20 bg-gray-300  md:w-1/2 text-center  md:text-left">

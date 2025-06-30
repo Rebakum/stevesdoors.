@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent } from "@/Components/Ui/card";
 
 import {
@@ -10,15 +12,17 @@ import {
 import interiorDoor1 from "@/assets/images/InteriorDoors/id-1.png";
 
 import interiorDoor2 from "@/assets/images/InteriorDoors/id-2.png";
-import interiorDoor3 from "@/assets/images/InteriorDoors/id-3.jpg";
-import interiorDoor4 from "@/assets/images/InteriorDoors/id-4.jpg";
+// import interiorDoor3 from "@/assets/images/InteriorDoors/id-3.jpg";
+// import interiorDoor4 from "@/assets/images/InteriorDoors/id-4.jpg";
 import interiorDoor5 from "@/assets/images/InteriorDoors/id-5.png";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 
 const DoorTypesCarousel = () => {
   return (
     <div>
       <Carousel
+        plugins={[Autoplay({ delay: 6000 })]}
         opts={{
           align: "center",
         }}
@@ -68,12 +72,12 @@ const doorTypes = [
   {
     id: 3,
     title: "French Door",
-    image: interiorDoor3,
+    image: interiorDoor1,
   },
   {
     id: 4,
     title: "Sliding Door",
-    image: interiorDoor4,
+    image: interiorDoor2,
   },
   {
     id: 5,

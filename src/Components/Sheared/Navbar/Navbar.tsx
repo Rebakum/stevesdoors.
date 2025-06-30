@@ -131,11 +131,15 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed lg:top-10 left-0 w-full z-50 transition-all duration-300 px-10 ${
-        scrolled ? "bg-white shadow-md" : isHome ? "bg-white" : "bg-transparent"
+      className={`fixed lg:top-10 left-0 w-full z-50  transition-all duration-300 px-10 ${
+        scrolled
+          ? "bg-white shadow-md"
+          : isHome
+          ? "bg-white"
+          : "bg-transparent "
       }`}
     >
-      <div className="max-w-screen-xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="max-w-screen-xl mx-auto px-4 py-6 flex justify-between items-center">
         {/* Logo */}
         <div
           className={`text-2xl font-bold ${

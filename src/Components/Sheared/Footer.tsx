@@ -1,9 +1,11 @@
+import Link from "next/link";
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { MdOutlineDoorSliding } from "react-icons/md";
 
 const Footer = () => {
   return (
@@ -79,8 +81,13 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="mt-12 border-t border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-        <p>© Copyright 2021, All Rights Reserved, Steves & Sons</p>
-        <p>Website by Primo Motif</p>
+        <p>© Copyright 2021, All Rights Reserved, Akaba Doors</p>
+        <span className="flex items-center justify-center space-x-2">
+          <Link href="/auth/login" className="text-gray-400 hover:text-white">
+            <MdOutlineDoorSliding />
+          </Link>
+          <p>Website by Primo Motif</p>
+        </span>
       </div>
     </footer>
   );
