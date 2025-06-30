@@ -9,7 +9,7 @@ const DoorTypes = () => {
             Browse by Door Type
           </h1>
         </div>
-        <p className="text-gray-600 text-lg w-full md:w-2/3">
+        <p className="text-gray-600 text-justify text-lg w-full md:w-2/3">
           Interior and exterior door designs with endless additional features
           such as decorative glass, beautiful hardware and premium exterior
           products.

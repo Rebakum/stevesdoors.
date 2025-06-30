@@ -248,9 +248,7 @@ const Navbar = () => {
       {isOpen && (
         <div
           className={`md:hidden px-4 pb-4 ${
-            scrolled || !isHome
-              ? "bg-white text-gray-800"
-              : "bg-blue-100 text-blue-900"
+            scrolled || !isHome ? "bg-white text-gray-800" : " text-blue-700"
           }`}
         >
           {navLinks.map((link, index) => (

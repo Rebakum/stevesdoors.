@@ -22,7 +22,9 @@ const InfoSection = () => {
               />
               <div>
                 <h3 className="text-blue-900 font-semibold">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-sm text-gray-600 text-justify">
+                  {item.description}
+                </p>
               </div>
             </div>
           </div>
