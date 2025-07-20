@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const HeroBanner = () => {
   return (
-    <section className="container mx-auto pb-12 pt-40 h-[80%]">
-      <div className=" flex flex-col-reverse md:flex-row justify-center items-center px-6 md:px-12 gap-5 md:gap-8">
+    <section className="container mx-auto pb-12 pt-40 h-[70%]">
+      <div className=" flex flex-col-reverse md:flex-row  bg-gray-300 justify-center items-center gap-5 ">
         {/* Text Content */}
-        <div className="w-full min-h-screen rounded-sm flex flex-col items-start  p-20 bg-gray-300  md:w-1/2 text-center  md:text-left">
+        <div className="w-full  rounded-sm flex flex-col items-start  p-20  md:w-1/2 text-center  md:text-left">
           <h1 className=" md:text-6xl text-4xl font-bold text-gray-800 leading-tight mb-6">
             The Envy of <br /> the Block
           </h1>
@@ -26,7 +26,7 @@ const HeroBanner = () => {
         </div>
 
         {/* Hero Image */}
-        <div className="w-full md:w-1/2 min-h-screen flex justify-center">
+        <div className="w-full md:w-1/2 h-[500px] p-10 flex justify-center">
           <Image
             src={heroImg}
             alt="Interior Door"

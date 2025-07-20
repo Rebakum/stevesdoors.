@@ -27,7 +27,7 @@ const Featured = () => {
         {Images.map((img, index) => (
           <div
             key={index}
-            className="w-[400px] h-[600px] relative mx-auto rounded-sm shadow-lg overflow-hidden"
+            className="w-[400px] h-[400px] relative mx-auto rounded-sm shadow-lg overflow-hidden"
           >
             <Image
               src={img}

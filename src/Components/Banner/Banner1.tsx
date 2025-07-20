@@ -17,7 +17,7 @@ const Banner1 = () => {
         <h1 className="text-4xl md:text-6xl font-bold text-center mb-4">
           Interior Doors
         </h1>
-        <p className="text-lg md:text-xl mb-6 max-w-1/2 text-center leading-relaxed">
+        <p className="text-lg md:text-xl mb-6 max-w-1/2 md:text-center text-justify leading-relaxed">
           Steves &amp; Sons offers everything from high density fiberwood to
           flush door for interiors. Molded panel doors are one of our most
           popular styles, ranging from a one panel to a six panel design, in

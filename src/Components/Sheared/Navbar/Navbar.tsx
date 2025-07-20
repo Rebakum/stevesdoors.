@@ -39,7 +39,7 @@ const Navbar = () => {
   type SubmenuItem = {
     name: string;
     href: string;
-    image?: typeof hoverImage1;
+    image?: StaticImageData;
   };
 
   type NavLink = {
@@ -55,17 +55,17 @@ const Navbar = () => {
       submenu: [
         {
           name: "Molded Panel Doors",
-          href: "/interior-doors/moldedPanelDoors",
+          href: "/interior-doors",
           image: hoverImage1,
         },
         {
           name: "Ultra MDF Doors",
-          href: "/interior-doors/ultraMDFDoors",
+          href: "/interior-doors",
           image: hoverImage2,
         },
         {
           name: "Glass Doors",
-          href: "/interior-doors/glassDoors",
+          href: "/interior-doors",
           image: hoverImage3,
         },
         {
@@ -86,17 +86,17 @@ const Navbar = () => {
       submenu: [
         {
           name: "Steel Entry Doors",
-          href: "/exterior-doors/steelEntryDoors",
+          href: "/exterior-doors",
           image: hoverImage6,
         },
         {
           name: "Smooth Fiberglass Doors",
-          href: "/exterior-doors/smoothFiberglassDoors",
+          href: "/exterior-doors",
           image: hoverImage7,
         },
         {
           name: "Textured Fiberglass Doors",
-          href: "/exterior-doors/texturedFiberglassDoors",
+          href: "/exterior-doors",
           image: hoverImage8,
         },
         {
@@ -147,7 +147,7 @@ const Navbar = () => {
           {navLinks.map((link, index) => (
             <div key={index} className="group relative">
               <Link
-                href={link.href || "#"}
+                href={link.href}
                 className={`transition hover:text-blue-900 ${
                   pathname === link.href
                     ? "text-blue-900 font-semibold"
@@ -162,10 +162,10 @@ const Navbar = () => {
               </Link>
 
               {link.submenu && (
-                <div className="absolute top-full left-0 mt-1 hidden group-hover:flex bg-white shadow-lg rounded-md z-50">
+                <div className="absolute  top-full left-0  hidden group-hover:flex shadow-lg rounded-md z-50">
                   <div className="flex">
                     {/* Text Menu */}
-                    <div className="flex flex-col p-3 gap-3">
+                    <div className="flex flex-col p-3 gap-3 w-64  bg-white rounded">
                       {link.submenu.map((sublink, subIndex) => (
                         <div
                           key={subIndex}
@@ -173,12 +173,13 @@ const Navbar = () => {
                             setHoveredImage(sublink.image ?? null)
                           }
                           onMouseLeave={() => setHoveredImage(null)}
+                          className=""
                         >
                           <Link
                             href={sublink.href}
-                            className={`px-4 py-1 hover:text-blue-800 hover:border-l-4 hover:border-l-gray-700 whitespace-nowrap ${
+                            className={`px-4 py-3 hover:text-blue-900 hover:border-l-4 hover:border-l-gray-700 ${
                               pathname === sublink.href
-                                ? "text-blue-900 font-semibold"
+                                ? "text-blue-900 font-semibold border-l-4 border-blue-900"
                                 : "text-gray-700"
                             }`}
                           >
@@ -190,7 +191,7 @@ const Navbar = () => {
 
                     {/* Image Preview */}
                     {hoveredImage && (
-                      <div className="w-48 h-48 p-5 bg-gray-200 ml-4 rounded overflow-hidden shadow transition-opacity duration-300 ease-in-out">
+                      <div className="w-48 h-48 p-3 bg-gray-200 ml-4 rounded overflow-hidden shadow transition-opacity duration-300 ease-in-out">
                         <Image
                           src={hoveredImage}
                           alt="Preview"
@@ -253,9 +254,11 @@ const Navbar = () => {
             <div key={index}>
               <div className="flex justify-between items-center">
                 <Link
-                  href={link.href || "#"}
-                  className={`block py-2 hover:text-blue-900 ${
-                    pathname === link.href ? "text-blue-900 font-semibold" : ""
+                  href={link.href}
+                  className={`block py-2 hover:text-orange-500 ${
+                    pathname === link.href
+                      ? "text-orange-500 font-semibold"
+                      : ""
                   }`}
                   onClick={() => !link.submenu && setIsOpen(false)}
                 >
@@ -282,9 +285,9 @@ const Navbar = () => {
                     <Link
                       key={subIndex}
                       href={sublink.href}
-                      className={`block py-1 hover:text-blue-900 ${
+                      className={`block py-1 hover:text-orange-500 ${
                         pathname === sublink.href
-                          ? "text-blue-900 font-semibold"
+                          ? "text-orange-500 font-semibold"
                           : "text-gray-700"
                       }`}
                       onClick={() => setIsOpen(false)}

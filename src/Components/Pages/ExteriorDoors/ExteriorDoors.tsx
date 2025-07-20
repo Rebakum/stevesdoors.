@@ -1,31 +1,39 @@
-import door1 from "@/assets/images/ExteriorDoors/ed-1.png";
-import door2 from "@/assets/images/ExteriorDoors/ed-2.png";
+import type { Door } from "@/app/types/Door";
 import ExteriorDoorCart from "./ExteriorDoors/ExteriorDoorsCart";
 
-const ExteriorDoors = () => {
+const ExteriorDoors = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/doors?doorType=exterior`,
+    {
+      next: {
+        revalidate: 30,
+      },
+    }
+  );
+
+  const result = await res.json();
+  const doors = result.data;
+
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {doors.map((door, idx) => (
-          <ExteriorDoorCart key={idx} door={door} />
-        ))}
-      </div>
+      <h2 className="text-2xl font-semibold text-center mb-8">
+        Exterior Doors
+      </h2>
+
+      {doors.length === 0 ? (
+        <p className="text-center text-gray-500">No exterior doors found.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {doors.map((door: Door) => (
+            <ExteriorDoorCart
+              key={door.id}
+              door={{ ...door, id: String(door.id) }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
-const doors = [
-  {
-    img: door1.src,
-    title: "Element Steel Doors",
-    description:
-      "Steel doors stand up to harsh environmental conditions and resist warping and moisture. These low-maintenance doors are primed for easy painting and are available in a variety of high-definition panel designs.",
-  },
-  {
-    img: door2.src,
-    title: "Reliant Smooth Fiberglass Doors",
-    description:
-      "Smooth fiberglass doors are easy to paint to match any décor, and feature an insulating core for energy efficiency. These low-maintenance doors won’t crack, split or warp, offering years of trouble-free performance.",
-  },
-];
 
 export default ExteriorDoors;

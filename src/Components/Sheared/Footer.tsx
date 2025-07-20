@@ -9,7 +9,7 @@ import { MdOutlineDoorSliding } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-200 px-6 py-12">
+    <footer className="bg-gray-800 z-50 text-gray-200 px-6 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
         {/* Logo & Address */}
         <div>
@@ -83,7 +83,11 @@ const Footer = () => {
       <div className="mt-12 border-t border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
         <p>© Copyright 2021, All Rights Reserved, Akaba Doors</p>
         <span className="flex items-center justify-center space-x-2">
-          <Link href="/auth/login" className="text-gray-400 hover:text-white">
+          <Link
+            href="
+            /dashboard"
+            className="text-gray-400 hover:text-white"
+          >
             <MdOutlineDoorSliding />
           </Link>
           <p>Website by Primo Motif</p>
