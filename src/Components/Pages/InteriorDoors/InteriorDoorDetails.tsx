@@ -6,7 +6,7 @@ const InteriorDoorsDetails = ({ door }) => {
       <div className="flex flex-col-reverse md:flex-row py-12  justify-center items-center gap-5">
         {/* Text Content */}
         <div className="w-full rounded-sm flex flex-col items-start p-6 md:p-20 md:w-1/2 text-center md:text-left">
-          <h1 className="md:text-6xl text-4xl font-bold text-gray-800 leading-tight mb-6">
+          <h1 className="md:text-6xl text-4xl font-bold leading-tight mb-6">
             Interior Details Pages
             {door.title}
           </h1>

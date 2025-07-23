@@ -1,7 +1,7 @@
 "use server";
-
+import { jwtDecode } from "jwt-decode";
+import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
-
 export const registerUser = async (userData: FieldValues) => {
   try {
     const res = await fetch(
@@ -23,33 +23,35 @@ export const registerUser = async (userData: FieldValues) => {
 
 export const LoginUser = async (userData: FieldValues) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}auth/login`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-
+      credentials: "include",
       body: JSON.stringify(userData),
     });
-    return res.json();
+    const result = await res.json();
+    // console.log(result);
+    if (result.success) {
+      (await cookies()).set("token", result?.data?.token);
+    }
+    return result;
   } catch (error: any) {
     return Error(error);
   }
 };
 
-// export const loginUser = async (data: { email: string; password: string }) => {
-//   const res = await fetch("http://localhost:5000/api/auth/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(data),
-//     credentials: "include",
-//   });
+export const getCurrentUser = async () => {
+  const token = (await cookies()).get("token")?.value;
+  let decodedData = null;
 
-//   if (!res.ok) {
-//     throw new Error("Failed to login");
-//   }
+  if (token) {
+    decodedData = await jwtDecode(token);
+    return decodedData;
+  } else {
+    return null;
+  }
+};
 
-//   return res.json();
-// };
+export default LoginUser;

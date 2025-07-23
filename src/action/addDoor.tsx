@@ -17,7 +17,7 @@ const addDoor = async (data: FormData) => {
   const doorInfo = await res.json();
 
   if (doorInfo?.id) {
-    redirect(`/doors/${doorInfo.id}`);
+    redirect(`/doors/all_doors/${doorInfo.id}`);
   }
 
   return doorInfo;

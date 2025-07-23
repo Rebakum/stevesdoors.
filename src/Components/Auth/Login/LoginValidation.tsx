@@ -7,5 +7,4 @@ export const loginSchema = z.object({
   password: z
     .string({ required_error: "Password Confirmation is required" })
     .min(6, "Password must be at least 6 characters"),
-  passwordConfirm: z.string({ required_error: "password is required" }).min(1),
 });

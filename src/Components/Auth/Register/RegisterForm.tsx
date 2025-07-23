@@ -18,13 +18,14 @@ import { toast } from "sonner";
 import { registrationSchema } from "./RegisterValidation";
 
 const RegisterForm = () => {
-  const router = useRouter();
   const form = useForm({ resolver: zodResolver(registrationSchema) });
+
   const {
     formState: { isSubmitting },
   } = form;
   const password = form.watch("password");
   const passwordConfirm = form.watch("passwordConfirm");
+  const router = useRouter();
   // console.log("password", password, " passwordConfirm", passwordConfirm);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     // console.log(data);
@@ -34,10 +35,7 @@ const RegisterForm = () => {
       console.log("user", res);
       if (res.success) {
         toast.success(res?.message);
-        form.reset();
-
         router.push("/login");
-        console.log(router);
       } else {
         toast.error(res?.message);
       }
@@ -98,7 +96,7 @@ const RegisterForm = () => {
                   <FormLabel className="py-2">Password</FormLabel>
                   <FormControl>
                     <input
-                      type="password"
+                      type="pssword"
                       {...field}
                       value={field.value || ""}
                       className="py-2 px-2 border border-gray-400 rounded-sm"

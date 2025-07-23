@@ -1,22 +1,21 @@
-import BeautifulExteriorDoors from "@/Components/Home/BeautifulExteriorDoors";
-import DoorTypes from "@/Components/Home/DoorTypes/DoorTypes";
-import Featured from "@/Components/Home/Featured/Featured";
+import { getCurrentUser } from "@/services/AuthService";
 
-import HeroBanner from "@/Components/Home/HeroBanner";
-import Inspired from "@/Components/Home/Inspired/Inspired";
-import StylishInteriorDoors from "@/Components/Home/StylishInteriorDoors";
-import InfoSection from "@/Components/Sheared/InfoSection/InfoSection";
+const HomePage = async () => {
+  const user = await getCurrentUser();
+  console.log(user);
 
-export default function Home() {
   return (
     <>
-      <HeroBanner />
+      <h1>my home page</h1>
+      {/* <HeroBanner />
       <StylishInteriorDoors />
       <BeautifulExteriorDoors />
       <DoorTypes />
       <Inspired />
       <Featured />
-      <InfoSection />
+      <InfoSection /> */}
     </>
   );
-}
+};
+
+export default HomePage;

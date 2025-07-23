@@ -11,7 +11,7 @@ type FormData = {
   model: string;
 };
 
-const AddDoors = () => {
+const AddDoorFrom = () => {
   const [formData, setFormData] = useState<FormData>({
     title: "",
     image: null,
@@ -44,18 +44,6 @@ const AddDoors = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const action =
-      formData.type === "interior"
-        ? "/interior-doors"
-        : formData.type === "exterior"
-        ? "/exterior-doors"
-        : "#";
-
-    if (formRef.current) {
-      formRef.current.action = action;
-      formRef.current.submit(); // Submit the form manually
-    }
   };
 
   return (
@@ -154,24 +142,35 @@ const AddDoors = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium">Door Image</label>
-          <input
-            type="file"
-            name="image"
-            onChange={handleImageChange}
-            className="w-full"
-          />
+          <div>
+            <label className="block text-sm font-medium">Cover Image</label>
+            <input
+              type="file"
+              name="image"
+              onChange={handleImageChange}
+              className="w-full"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium">Door Image</label>
+            <input
+              type="file"
+              name="image"
+              onChange={handleImageChange}
+              className="w-full"
+            />
+          </div>
         </div>
 
         <button
           type="submit"
           className="w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
         >
-          Add Doors
+          Add Door
         </button>
       </form>
     </div>
   );
 };
 
-export default AddDoors;
+export default AddDoorFrom;

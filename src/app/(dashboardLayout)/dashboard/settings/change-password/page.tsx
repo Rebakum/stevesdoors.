@@ -1,7 +1,7 @@
 const changePassword = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <h1>Change Password</h1>
+    <div className="min-h-screen flex flex-col justify-center items-center">
+      <h1 className="text-3xl mb-10">Change Password</h1>
       <form className="space-y-4">
         <div>
           <label htmlFor="current-password">Current Password</label>

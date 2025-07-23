@@ -1,29 +1,24 @@
 "use client";
 
-import { Building, Settings, SquareTerminal } from "lucide-react";
+import { Building, Settings } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
   {
-    title: "dashboard",
-    icon: SquareTerminal,
-    url: "/dashboard",
-  },
-  {
     title: " Doors",
     icon: Building,
     url: "/doors",
-    items: [{ title: "All Doors", url: "/doors/all_doors" }],
+    items: [{ title: "All Doors", url: "/dashboard/doors/all_doors" }],
   },
   {
     title: "Settings",
     icon: Settings,
-    url: "settings",
+    url: "/settings",
     items: [
-      { title: "Admin Preferences", url: "/settings/preferences" },
-      { title: "Change Password", url: "/settings/change-password" },
+      { title: "Admin Preferences", url: "/dashboard/settings/preferences" },
+      { title: "Change Password", url: "/dashboard/settings/change-password" },
     ],
   },
 ];
@@ -42,8 +37,6 @@ const Sidebar = () => {
 
   return (
     <aside className="w-64 min-h-screen bg-gray-800 text-white p-4 space-y-4">
-      <h3 className="text-lg font-semibold">Menu</h3>
-
       <h2 className="text-2xl font-bold mb-8">
         <Link href="/">Akaba Doors</Link>
       </h2>

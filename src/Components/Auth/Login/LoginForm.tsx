@@ -2,57 +2,63 @@
 
 import { Button } from "@/Components/Ui/button";
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/Components/Ui/form";
-
-import { LoginUser } from "@/services/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { FieldValues, useForm } from "react-hook-form";
+
+import LoginUser from "@/services/AuthService";
+
 import Link from "next/link";
-import { FieldValues, Form, SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { loginSchema } from "./LoginValidation";
 
 const LoginForm = () => {
-  const form = useForm({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
+  const form = useForm({ resolver: zodResolver(loginSchema) });
   const {
     formState: { isSubmitting },
   } = form;
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
+  const onSubmit = async (data: FieldValues) => {
+    console.log("Login form data:", data);
+
     try {
-      const res = await LoginUser(data);
-      console.log("user", res);
-      if (res?.success) {
-        toast.success(res.message || "Login successful!");
-        // TODO: Redirect or store token if needed
+      const result = await LoginUser(data);
+      console.log("Login response:", result);
+
+      const role = result?.data?.user?.role;
+      console.log("Role:", role);
+
+      if (result?.success && role?.toLowerCase() === "admin") {
+        toast.success(result?.message);
+        console.log("Redirecting to dashboard...");
+        router.push("/dashboard");
       } else {
-        toast.error(res.message || "Login failed.");
+        toast.error("Only admins are allowed to access the dashboard.");
+        router.push("/");
       }
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message || "Something went wrong.");
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Something went wrong during login.");
     }
   };
 
   return (
-    <div className="mx-auto container min-h-screen flex flex-col items-center justify-center bg-gray-800">
-      <div className="w-full max-w-md bg-white space-y-6 p-6 rounded shadow-md">
-        <h1 className="text-2xl font-bold text-center">Login Here</h1>
-        <p className="text-center">Welcome back</p>
+    <div className="mx-auto container min-h-screen flex flex-col items-center justify-center bg-gray-800 ">
+      <div className="w-full max-w-md bg-white space-y-6  p-6 rounded shadow-md">
+        <h1 className="text-2xl font-bold text-center ">Login</h1>
+        <p>Wellcome back</p>
+
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
               name="email"
@@ -63,10 +69,11 @@ const LoginForm = () => {
                     <input
                       type="email"
                       {...field}
-                      className="w-full py-2 px-3 border border-gray-400 rounded"
-                      placeholder="Enter your email"
+                      value={field.value || ""}
+                      className="py-2 px-2 border border-gray-400 rounded-sm"
                     />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
@@ -81,23 +88,25 @@ const LoginForm = () => {
                     <input
                       type="password"
                       {...field}
-                      className="w-full py-2 px-3 border border-gray-400 rounded"
-                      placeholder="Enter your password"
+                      value={field.value || ""}
+                      className="py-2 px-2 border border-gray-400 rounded-sm"
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <Button
               type="submit"
               className="w-full bg-blue-900 hover:bg-blue-800 mt-2"
-              disabled={isSubmitting}
             >
-              {isSubmitting ? "Logging ..." : "Login"}
+              {" "}
+              {isSubmitting ? "logning..." : "login"}
             </Button>
+
             <p className="mt-4 text-sm text-center">
-              Don&apos;t have an account?{" "}
+              Do not have an account?{" "}
               <Link href="/register" className="text-blue-800 hover:underline">
                 Register
               </Link>

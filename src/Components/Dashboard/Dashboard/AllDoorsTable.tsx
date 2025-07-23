@@ -6,6 +6,7 @@ import { useState } from "react";
 type Door = {
   id: number;
   name: string;
+  coverImage: string | null;
   image: File | null;
   description: string;
   category: string;
@@ -18,6 +19,7 @@ const AllDoorsTable = () => {
     {
       id: 1,
       name: "Glass Panel Door",
+      coverImage: null,
       image: null,
       description: "A high-quality glass panel door for modern interiors.",
       category: "UGlass Doors",
@@ -28,6 +30,7 @@ const AllDoorsTable = () => {
       id: 2,
       name: "Flush Exterior Door",
       image: null,
+      coverImage: null,
       description: "Durable flush door ideal for exterior use.",
       category: "Flush Exterior Doors",
       type: "exterior",
