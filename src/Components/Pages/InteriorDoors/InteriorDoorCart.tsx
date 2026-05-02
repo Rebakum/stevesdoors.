@@ -1,15 +1,9 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
-type Door = {
-  _id: string;
-  title: string;
-  images: StaticImageData[] | string[];
-  description: string;
-  category: string;
-};
+import type { Door } from "@/types/Door";
 
 type InteriorDoorCartProps = {
   door: Door;

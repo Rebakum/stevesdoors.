@@ -1,3 +1,18 @@
+// import type { NextConfig } from "next";
+
+// const nextConfig: NextConfig = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: "https",
+//         hostname: "**",
+//       },
+//     ],
+//   },
+// };
+
+// export default nextConfig;
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -8,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: "**",
       },
     ],
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb", // or '5mb', '20mb', etc.
+    },
   },
 };
 

@@ -2,6 +2,7 @@
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
+
 export const registerUser = async (userData: FieldValues) => {
   try {
     const res = await fetch(
@@ -32,8 +33,8 @@ export const LoginUser = async (userData: FieldValues) => {
       body: JSON.stringify(userData),
     });
     const result = await res.json();
-    // console.log(result);
-    if (result.success) {
+    console.log("login user", result);
+    if (result?.status) {
       (await cookies()).set("token", result?.data?.token);
     }
     return result;
@@ -41,6 +42,7 @@ export const LoginUser = async (userData: FieldValues) => {
     return Error(error);
   }
 };
+
 
 export const getCurrentUser = async () => {
   const token = (await cookies()).get("token")?.value;
@@ -55,3 +57,25 @@ export const getCurrentUser = async () => {
 };
 
 export default LoginUser;
+
+export const ReCaptchTokenVaryfication = async (token: string) => {
+  try {
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        secret: process.env.NEXT_PUBLIC_ReCAPTCHA_SERVER_KEY!,
+        response: token,
+      }),
+    });
+    return res.json();
+  } catch (error: any) {
+    return Error(error);
+  }
+};
+export const logout = async () => {
+  (await cookies()).delete("token");
+  console.log("User logged out successfully.");
+};

@@ -85,12 +85,12 @@ const Footer = () => {
         <span className="flex items-center justify-center space-x-2">
           <Link
             href="
-            /dashboard"
+            /login"
             className="text-gray-400 hover:text-white"
           >
             <MdOutlineDoorSliding />
           </Link>
-          <p>Website by Primo Motif</p>
+          <p>Website by Rebeka Sultana</p>
         </span>
       </div>
     </footer>

@@ -2,7 +2,7 @@
 // import door2 from "@/assets/images/InteriorDoors/id-2.png";
 import InteriorDoorCart from "./InteriorDoorCart";
 
-import type { Door } from "@/app/types/Door";
+import type { Door } from "@/types/Door";
 
 // const doors: Door[] = [
 //   {
@@ -85,10 +85,7 @@ const InteriorDoors = async () => {
     <div className="container mx-auto px-4 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {doors.map((door: Door) => (
-          <InteriorDoorCart
-            key={door.id}
-            door={{ ...door, id: String(door.id) }}
-          />
+          <InteriorDoorCart key={door._id} door={door} />
         ))}
       </div>
     </div>

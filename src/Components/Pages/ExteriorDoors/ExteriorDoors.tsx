@@ -1,4 +1,4 @@
-import type { Door } from "@/app/types/Door";
+import type { Door } from "@/types/Door";
 import ExteriorDoorCart from "./ExteriorDoors/ExteriorDoorsCart";
 
 const ExteriorDoors = async () => {
@@ -13,6 +13,7 @@ const ExteriorDoors = async () => {
 
   const result = await res.json();
   const doors = result.data;
+  console.log(doors);
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -25,10 +26,7 @@ const ExteriorDoors = async () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {doors.map((door: Door) => (
-            <ExteriorDoorCart
-              key={door.id}
-              door={{ ...door, id: String(door.id) }}
-            />
+            <ExteriorDoorCart key={door._id} door={door} />
           ))}
         </div>
       )}

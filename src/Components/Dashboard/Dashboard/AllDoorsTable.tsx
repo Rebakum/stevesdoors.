@@ -1,64 +1,58 @@
 "use client";
+import { useUser } from "@/context/UserContext";
+
+import { deleteDoorById } from "@/services/DoorService";
+import { Door } from "@/types/Door";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 
-type Door = {
-  id: number;
-  name: string;
-  coverImage: string | null;
-  image: File | null;
-  description: string;
-  category: string;
-  type: string;
-  model: string;
-};
+interface AllDoorsTableProps {
+  doors: Door[];
+}
 
-const AllDoorsTable = () => {
-  const [Doors, setDoors] = useState<Door[]>([
-    {
-      id: 1,
-      name: "Glass Panel Door",
-      coverImage: null,
-      image: null,
-      description: "A high-quality glass panel door for modern interiors.",
-      category: "UGlass Doors",
-      type: "interior",
-      model: "GPD-123",
-    },
-    {
-      id: 2,
-      name: "Flush Exterior Door",
-      image: null,
-      coverImage: null,
-      description: "Durable flush door ideal for exterior use.",
-      category: "Flush Exterior Doors",
-      type: "exterior",
-      model: "FEX-321",
-    },
-  ]);
+const AllDoorsTable = ({ doors }: AllDoorsTableProps) => {
+  const { user } = useUser();
+  const [doorList, setDoorList] = useState<Door[]>(doors);
 
-  const handleDelete = (id: number) => {
-    const confirm = window.confirm(
-      "Are you sure you want to delete this Door?"
+  if (!user) {
+    return <div className="text-center">Please log in to view the doors.</div>;
+  }
+
+  const handleDelete = async (id: string) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this door?"
     );
-    if (confirm) {
-      const updatedDoors = Doors.filter((Door) => Door.id !== id);
-      setDoors(updatedDoors);
+    if (!confirmDelete) return;
+    const toastId = toast.loading("Deleting Door ....");
+
+    try {
+      await deleteDoorById(id);
+      const updatedList = doorList.filter((door) => door.id !== id);
+      setDoorList(updatedList);
+      toast.success("Door deleted successfully!", {
+        id: toastId,
+      });
+    } catch (error) {
+      console.error("Failed to delete door:", error);
+      toast.error("Failed to delete. Try again.", {
+        id: toastId,
+      });
     }
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-6">
+    <div className="max-w-6xl mx-auto mt-24 p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">All Doors</h2>
-        <div className="flex gap-3 ">
+        <h2 className="text-2xl font-bold">All Doors Data</h2>
+        <div className="flex gap-3">
           <input
             type="search"
             placeholder="Search Doors..."
             className="px-2 py-2"
           />
-          <Link href="/dashboard/doors/add_door">
+          <Link href="/doors/add_door">
             <button className="px-4 py-2 bg-blue-500 text-white rounded">
               Add Door
             </button>
@@ -71,55 +65,44 @@ const AllDoorsTable = () => {
           <thead className="bg-gray-200">
             <tr>
               <th className="p-2 border">Image</th>
-              <th className="p-2 border">Name</th>
+              <th className="p-2 border">Title</th>
               <th className="p-2 border">Category</th>
-              <th className="p-2 border">Type</th>
+              <th className="p-2 border">Door Type</th>
               <th className="p-2 border">Model</th>
-              <th className="p-2 border text-center">Actions</th>
+              <th className="p-2 border text-center">Delete</th>
+              <th className="p-2 border text-center">Edit</th>
             </tr>
           </thead>
           <tbody>
-            {Doors.map((Door) => (
-              <tr key={Door.id} className="border-t hover:bg-gray-50">
+            {doorList.map((door) => (
+              <tr key={door.id}>
                 <td className="p-2 border">
-                  {Door.image ? (
-                    <Image
-                      src={URL.createObjectURL(Door.image)}
-                      alt={Door.name}
-                      width={48}
-                      height={48}
-                      className="h-12 w-12 object-cover rounded"
-                    />
-                  ) : (
-                    <span className="text-gray-400 italic">No image</span>
-                  )}
+                  <Image
+                    src={door.images?.[0] || "/placeholder.jpg"}
+                    alt={door.title}
+                    width={60}
+                    height={40}
+                  />
                 </td>
-                <td className="p-2 border">{Door.name}</td>
-                <td className="p-2 border">{Door.category}</td>
-                <td className="p-2 border">{Door.type}</td>
-                <td className="p-2 border">{Door.model}</td>
-                <td className="p-2 border text-center space-x-2">
-                  <Link href="/dashboard/doors/doors_update">
-                    <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
-                      Edit
-                    </button>
-                  </Link>
+                <td className="p-2 border">{door.title}</td>
+                <td className="p-2 border">{door.category}</td>
+                <td className="p-2 border">{door.doorType}</td>
+                <td className="p-2 border">{door.model}</td>
+                <td className="p-2 border text-center">
                   <button
-                    onClick={() => handleDelete(Door.id)}
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                    onClick={() => handleDelete(door.id)}
+                    className="text-red-500 hover:underline"
                   >
                     Delete
                   </button>
                 </td>
-              </tr>
-            ))}
-            {Doors.length === 0 && (
-              <tr>
-                <td colSpan={6} className="text-center text-gray-500 py-4">
-                  No Doors found.
+                <td className="p-2 border text-center">
+                  <Link href={`/doors/doors_update/${door.id}`}>
+                    <span className="text-blue-500 hover:underline">Edit</span>
+                  </Link>
                 </td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
       </div>

@@ -1,19 +1,26 @@
-import { getCurrentUser } from "@/services/AuthService";
+"use client";
+import BeautifulExteriorDoors from "@/Components/Home/BeautifulExteriorDoors";
+import DoorTypes from "@/Components/Home/DoorTypes/DoorTypes";
+import Featured from "@/Components/Home/Featured/Featured";
+import HeroBanner from "@/Components/Home/HeroBanner";
+import Inspired from "@/Components/Home/Inspired/Inspired";
+import StylishInteriorDoors from "@/Components/Home/StylishInteriorDoors";
+import InfoSection from "@/Components/Sheared/InfoSection/InfoSection";
+import { useUser } from "@/context/UserContext";
 
-const HomePage = async () => {
-  const user = await getCurrentUser();
+const HomePage = () => {
+  const user = useUser();
   console.log(user);
 
   return (
     <>
-      <h1>my home page</h1>
-      {/* <HeroBanner />
+      <HeroBanner />
       <StylishInteriorDoors />
       <BeautifulExteriorDoors />
       <DoorTypes />
       <Inspired />
       <Featured />
-      <InfoSection /> */}
+      <InfoSection />
     </>
   );
 };

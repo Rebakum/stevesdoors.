@@ -18,134 +18,162 @@ import { toast } from "sonner";
 import { registrationSchema } from "./RegisterValidation";
 
 const RegisterForm = () => {
-  const form = useForm({ resolver: zodResolver(registrationSchema) });
+  const router = useRouter();
+
+  const form = useForm({
+    resolver: zodResolver(registrationSchema),
+    mode: "onChange",
+
+    // 🔥 MUST: prevents uncontrolled → controlled error
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
+  });
 
   const {
+    handleSubmit,
+    control,
+    watch,
     formState: { isSubmitting },
   } = form;
-  const password = form.watch("password");
-  const passwordConfirm = form.watch("passwordConfirm");
-  const router = useRouter();
-  // console.log("password", password, " passwordConfirm", passwordConfirm);
+
+  // 🔥 SAFE WATCH (never undefined)
+  const password = watch("password") || "";
+  const passwordConfirm = watch("passwordConfirm") || "";
+
+  const isMismatch =
+    passwordConfirm.length > 0 && password !== passwordConfirm;
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    // console.log(data);
     try {
       const res = await registerUser(data);
 
-      console.log("user", res);
-      if (res.success) {
-        toast.success(res?.message);
+      if (res?.success) {
+        toast.success(res?.message || "Registered successfully");
         router.push("/login");
       } else {
-        toast.error(res?.message);
+        toast.error(res?.message || "Registration failed");
       }
-    } catch (err: any) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
     }
   };
+
   return (
-    <div className="mx-auto container min-h-screen flex flex-col items-center justify-center bg-gray-800 ">
-      <div className="w-full max-w-md bg-white space-y-6  p-6 rounded shadow-md">
-        <h1 className="text-2xl font-bold text-center ">Register</h1>
+    <div className="container mx-auto min-h-screen flex items-center justify-center bg-gray-800">
+      <div className="w-full max-w-md bg-white p-6 rounded shadow space-y-4">
+
+        <h1 className="text-2xl font-bold text-center">Register</h1>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+            {/* NAME */}
             <FormField
-              control={form.control}
+              control={control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="py-2">Name</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <input
                       type="text"
                       {...field}
-                      value={field.value || ""}
-                      className="py-2 px-2 border border-gray-400 rounded-sm"
+                      className="w-full border p-2 rounded"
                     />
                   </FormControl>
-
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            {/* EMAIL */}
             <FormField
-              control={form.control}
+              control={control}
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="py-2">Email</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <input
                       type="email"
                       {...field}
-                      value={field.value || ""}
-                      className="py-2 px-2 border border-gray-400 rounded-sm"
+                      className="w-full border p-2 rounded"
                     />
                   </FormControl>
-
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            {/* PASSWORD */}
             <FormField
-              control={form.control}
+              control={control}
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="py-2">Password</FormLabel>
-                  <FormControl>
-                    <input
-                      type="pssword"
-                      {...field}
-                      value={field.value || ""}
-                      className="py-2 px-2 border border-gray-400 rounded-sm"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="passwordConfirm"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="py-2"> Confirm Password</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
                     <input
                       type="password"
                       {...field}
-                      value={field.value || ""}
-                      className="py-2  px-2 border border-gray-400 rounded-sm "
+                      className="w-full border p-2 rounded"
                     />
                   </FormControl>
-                  {passwordConfirm && password !== passwordConfirm ? (
-                    <FormMessage className="text-red-600 text-sm">
-                      Passwords do not match
-                    </FormMessage>
-                  ) : (
-                    <FormMessage />
-                  )}
+                  <FormMessage />
                 </FormItem>
               )}
             />
 
+            {/* CONFIRM PASSWORD */}
+            <FormField
+              control={control}
+              name="passwordConfirm"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Confirm Password</FormLabel>
+                  <FormControl>
+                    <input
+                      type="password"
+                      {...field}
+                      className="w-full border p-2 rounded"
+                    />
+                  </FormControl>
+
+                  {/* custom mismatch message */}
+                  {isMismatch && (
+                    <p className="text-red-500 text-sm">
+                      Passwords do not match
+                    </p>
+                  )}
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* SUBMIT BUTTON */}
+             
             <Button
-              disabled={!!passwordConfirm && password !== passwordConfirm}
               type="submit"
-              className="w-full bg-blue-900 hover:bg-blue-800 mt-2"
+              disabled={isSubmitting || isMismatch}
+              className="w-full bg-blue-900 hover:bg-blue-800"
             >
-              {" "}
               {isSubmitting ? "Registering..." : "Register"}
             </Button>
+            
 
-            <p className="mt-4 text-sm text-center">
+            <p className="text-sm text-center">
               Already have an account?{" "}
-              <Link href="/login" className="text-blue-800 hover:underline">
+              <Link href="/login" className="text-blue-700 hover:underline">
                 Login here
               </Link>
             </p>
+
           </form>
         </Form>
       </div>

@@ -9,14 +9,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/Components/Ui/form";
+import LoginUser, { ReCaptchTokenVaryfication } from "@/services/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import { FieldValues, useForm } from "react-hook-form";
-
-import LoginUser from "@/services/AuthService";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { loginSchema } from "./LoginValidation";
 
@@ -26,21 +25,30 @@ const LoginForm = () => {
     formState: { isSubmitting },
   } = form;
   const router = useRouter();
+  const [reCaptchStatus, setReCaptchStatus] = useState(false);
+  const handleRecaptchaChange = async (value: string | null) => {
+    try {
+      const res = await ReCaptchTokenVaryfication(value!);
+      if (res?.success) {
+        setReCaptchStatus(true);
+        toast.success("ReCAPTCHA verified successfully.");
+      }
+    } catch (error) {
+      console.error("ReCAPTCHA verification failed:", error);
+      toast.error("ReCAPTCHA verification failed. Please try again.");
+    }
+  };
 
   const onSubmit = async (data: FieldValues) => {
-    console.log("Login form data:", data);
-
     try {
       const result = await LoginUser(data);
-      console.log("Login response:", result);
-
       const role = result?.data?.user?.role;
-      console.log("Role:", role);
+      // console.log("Role:", role);
 
-      if (result?.success && role?.toLowerCase() === "admin") {
+      if (result?.status && role?.toLowerCase() == "admin") {
         toast.success(result?.message);
         console.log("Redirecting to dashboard...");
-        router.push("/dashboard");
+        router.push("/profile");
       } else {
         toast.error("Only admins are allowed to access the dashboard.");
         router.push("/");
@@ -96,10 +104,17 @@ const LoginForm = () => {
                 </FormItem>
               )}
             />
+            <div className="flex items-center justify-center my-4">
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_ReCAPTCHA_CLIENT_KEY || ""}
+                onChange={handleRecaptchaChange}
+              />
+            </div>
 
             <Button
+              disabled={reCaptchStatus ? false : true}
               type="submit"
-              className="w-full bg-blue-900 hover:bg-blue-800 mt-2"
+              className="w-full bg-blue-900 hover:bg-blue-800 "
             >
               {" "}
               {isSubmitting ? "logning..." : "login"}

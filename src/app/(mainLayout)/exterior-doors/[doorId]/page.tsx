@@ -1,24 +1,19 @@
 // app/exterior-doors/[doorid]/page.tsx
 
 import ExteriorDoorsDetails from "@/Components/Pages/ExteriorDoors/ExteriorDoorsDetails";
+import { getDoorsById } from "@/services/DoorService";
 
 const ExteriorDoorDetailsPage = async ({
   params,
 }: {
   params: { doorId: string };
 }) => {
-  console.log(await params);
   const { doorId } = await params;
+  const door = await getDoorsById(doorId);
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/doors?doorType=interior&id=${doorId}`,
-    { cache: "no-store" }
-  );
-
-  const data = await res.json();
-  console.log({ data });
-  const door = Array.isArray(data) ? data[0] : data;
-  console.log(door);
+  if (!door?.status) {
+    return <p className="pt-32 text-center">Failed to load door data</p>;
+  }
 
   return (
     <div className="container mx-auto  bg-gray-400 min-h-screen">
