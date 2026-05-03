@@ -42,7 +42,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [openMenus, setOpenMenus] = useState<string[]>([]);
-  const { user, setIsLoading } = useUser();
+  const { setIsLoading } = useUser();
 
   const toggleMenu = (title: string) => {
     setOpenMenus((prev) =>

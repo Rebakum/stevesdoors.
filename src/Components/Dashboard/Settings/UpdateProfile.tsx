@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/Ui/avatar";
 import { Save } from "lucide-react";
 import { useUser } from "@/context/UserContext";
@@ -12,9 +12,15 @@ const UpdateProfile = () => {
   const router = useRouter();
 
 
-  const [name, setName] = useState(user?.name || "");
+  const [name, setName] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
-    console.log("USER FROM CONTEXT:", user);
+
+  // Initialize name when user data is loaded
+  useEffect(() => {
+    if (user?.name) {
+      setName(user.name);
+    }
+  }, [user?.name]);
 
   if (isLoading) return <div>Loading...</div>;
   if (!user) return <div>Please login</div>;

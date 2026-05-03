@@ -51,15 +51,15 @@ const RegisterForm = () => {
     try {
       const res = await registerUser(data);
 
-      if (res?.success) {
+      if (res?.status) {
         toast.success(res?.message || "Registered successfully");
         router.push("/login");
       } else {
         toast.error(res?.message || "Registration failed");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast.error("Something went wrong");
+      toast.error(error?.message || "Something went wrong");
     }
   };
 

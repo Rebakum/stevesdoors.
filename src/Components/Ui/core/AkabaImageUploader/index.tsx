@@ -11,7 +11,7 @@ type TImageUploaderProps = {
 };
 
 const AkabaImageUploader = ({
-  label = "Upload Image",
+  // label = "Upload Image",
   className,
   setImageFiles,
   setImagePreview,
@@ -58,7 +58,7 @@ type TCoverImageUploaderProps = {
   setCoverImagePreview: Dispatch<SetStateAction<string[] | []>>;
 };
 export const AkabaCoverImageUploader = ({
-  label = "Upload Image",
+  // label = "Upload Image",
   className,
   setCoverImageFiles,
   setCoverImagePreview,

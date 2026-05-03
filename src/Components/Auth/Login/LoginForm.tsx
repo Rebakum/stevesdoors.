@@ -45,7 +45,7 @@ const LoginForm = () => {
       const role = result?.data?.user?.role;
       // console.log("Role:", role);
 
-      if (result?.status && role?.toLowerCase() == "admin") {
+      if (result?.status && role?.toLowerCase() === "admin") {
         toast.success(result?.message);
         console.log("Redirecting to dashboard...");
         router.push("/profile");

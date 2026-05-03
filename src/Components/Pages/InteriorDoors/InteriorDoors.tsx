@@ -68,28 +68,40 @@ import type { Door } from "@/types/Door";
 // ];
 
 const InteriorDoors = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/doors?doorType=interior`,
-    {
-      next: {
-        revalidate: 30,
-      },
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/doors?doorType=interior`,
+      {
+        next: {
+          revalidate: 30,
+        },
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch interior doors: ${res.statusText}`);
     }
-  );
 
-  const result = await res.json();
-  const doors = result.data;
+    const result = await res.json();
+    const doors = result.data || [];
 
-  // console.log(doors);
-  return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {doors.map((door: Door) => (
-          <InteriorDoorCart key={door._id} door={door} />
-        ))}
+    return (
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {doors.map((door: Door) => (
+            <InteriorDoorCart key={door._id} door={door} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error("Error loading interior doors:", error);
+    return (
+      <div className="container mx-auto px-4 py-12">
+        <p className="text-center text-red-500">Failed to load interior doors. Please try again later.</p>
+      </div>
+    );
+  }
 };
 
 export default InteriorDoors;

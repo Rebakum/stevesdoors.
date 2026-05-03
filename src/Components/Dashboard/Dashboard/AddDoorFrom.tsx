@@ -29,7 +29,7 @@ const AddDoorForm = () => {
   const [coverImageFiles, setCoverImageFiles] = useState<File[]>([]);
   const [coverImagePreview, setCoverImagePreview] = useState<string[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
-  const { user, isLoading, setIsLoading } = useUser();
+  const { user, isLoading } = useUser();
   const router = useRouter();
 
   const [formData, setFormData] = useState<FormData>({
@@ -73,7 +73,7 @@ const AddDoorForm = () => {
     try {
       const result = await createDoor(dataToSend);
       console.log("Add door result:", result);
-      if (result.stutas) {
+      if (result.status) {
         toast.success("Door added successfully!");
         setTimeout(() => {
           router.push("/all_doors");

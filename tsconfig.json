@@ -26,9 +26,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/app/(dashboardLayout)/doors/add_door/page.txs",
-    "src/app/(dashboardLayout)/myProfile"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

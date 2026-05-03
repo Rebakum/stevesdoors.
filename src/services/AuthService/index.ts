@@ -12,13 +12,17 @@ export const registerUser = async (userData: FieldValues) => {
         headers: {
           "Content-Type": "application/json",
         },
-
         body: JSON.stringify(userData),
       }
     );
-    return res.json();
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || "Registration failed");
+    }
+    return data;
   } catch (error: any) {
-    return Error(error);
+    console.error("Registration error:", error);
+    throw error;
   }
 };
 
@@ -34,12 +38,16 @@ export const LoginUser = async (userData: FieldValues) => {
     });
     const result = await res.json();
     console.log("login user", result);
+    if (!res.ok) {
+      throw new Error(result.message || "Login failed");
+    }
     if (result?.status) {
       (await cookies()).set("token", result?.data?.token);
     }
     return result;
   } catch (error: any) {
-    return Error(error);
+    console.error("Login error:", error);
+    throw error;
   }
 };
 
@@ -70,12 +78,22 @@ export const ReCaptchTokenVaryfication = async (token: string) => {
         response: token,
       }),
     });
-    return res.json();
+    const result = await res.json();
+    if (!res.ok) {
+      throw new Error(`ReCAPTCHA verification failed: ${result.error || 'Unknown error'}`);
+    }
+    return result;
   } catch (error: any) {
-    return Error(error);
+    console.error("ReCAPTCHA error:", error);
+    throw error;
   }
 };
 export const logout = async () => {
-  (await cookies()).delete("token");
-  console.log("User logged out successfully.");
+  try {
+    (await cookies()).delete("token");
+    console.log("User logged out successfully.");
+  } catch (error: any) {
+    console.error("Logout error:", error);
+    throw error;
+  }
 };

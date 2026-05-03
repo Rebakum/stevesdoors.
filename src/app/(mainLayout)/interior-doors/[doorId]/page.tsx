@@ -8,11 +8,15 @@ const InteriorDoorDetailsPage = async ({
 }: {
   params: { doorId: string };
 }) => {
-  const { doorId } = params;
-  const door = await getDoorsById(doorId);
+  const door = await getDoorsById(params.doorId);
 
-  if (!door?.status) {
-    return <p className="pt-32 text-center">Failed to load door data</p>;
+  
+  if (!door) {
+    return (
+      <p className="pt-32 text-center text-red-500">
+        Failed to load door data
+      </p>
+    );
   }
 
   return (
