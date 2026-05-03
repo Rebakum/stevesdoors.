@@ -44,6 +44,9 @@ export const getDoorsById = async (
     );
 
     if (!res.ok) {
+      if (res.status === 400) {
+        return null;
+      }
       console.error(`Door fetch failed: ${res.status} ${res.statusText}`);
       return null;
     }
@@ -56,7 +59,7 @@ export const getDoorsById = async (
     }
 
     return {
-      id: door._id || door.id,
+      id: door?._id  ,
       title: door.title,
       description: door.description,
       coverImage: door.coverImage,

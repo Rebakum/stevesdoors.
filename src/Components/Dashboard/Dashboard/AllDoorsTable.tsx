@@ -2,19 +2,19 @@
 import { useUser } from "@/context/UserContext";
 
 import { deleteDoorById } from "@/services/DoorService";
-import { Door } from "@/types/Door";
+import { DoorData } from "@/types/Door";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
 interface AllDoorsTableProps {
-  doors: Door[];
+  doors: DoorData[];
 }
 
 const AllDoorsTable = ({ doors }: AllDoorsTableProps) => {
   const { user } = useUser();
-  const [doorList, setDoorList] = useState<Door[]>(doors);
+  const [doorList, setDoorList] = useState<DoorData[]>(doors);
 
   if (!user) {
     return <div className="text-center">Please log in to view the doors.</div>;

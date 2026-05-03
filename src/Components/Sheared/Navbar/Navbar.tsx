@@ -70,12 +70,12 @@ const Navbar = () => {
         },
         {
           name: "Flush Doors",
-          href: "/interior-doors/flushDoors",
+          href: "/interior-doors",
           image: hoverImage4,
         },
         {
           name: "Bifold Doors",
-          href: "/interior-doors/bifoldDoors",
+          href: "/interior-doors",
           image: hoverImage5,
         },
       ],
@@ -101,7 +101,7 @@ const Navbar = () => {
         },
         {
           name: "Glazed Patio Doors",
-          href: "/exterior-doors/glazedPatioDoors",
+          href: "/exterior-doors",
           image: hoverImage9,
         },
       ],

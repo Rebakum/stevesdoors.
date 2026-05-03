@@ -1,13 +1,20 @@
+import { redirect } from "next/navigation";
 import ExteriorDoorsDetails from "@/Components/Pages/ExteriorDoors/ExteriorDoorsDetails";
 import { getDoorsById } from "@/services/DoorService";
 
 const ExteriorDoorDetailsPage = async ({
   params,
 }: {
-  params: { doorId: string };
+  params: Promise<{ doorId: string }>;
 }) => {
-  const door = await getDoorsById(params.doorId);
+  const { doorId } = await params;
 
+  const invalidCategories = new Set(["glazedPatioDoors"]);
+  if (invalidCategories.has(doorId)) {
+    redirect("/exterior-doors");
+  }
+
+  const door = await getDoorsById(doorId);
 
   if (!door) {
     return (
